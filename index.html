@@ -20,11 +20,11 @@
   <script>
     "use strict";
     var timer = Date.now();
-
-window.addEventListener("load", function () {
-    function scriptOnload(){
+function scriptOnload(){
     console.log('script loaded')
     }
+window.addEventListener("load", function () {
+    
     console.log("time left", Date.now() - timer);
 
     var script = document.createElement('script');
