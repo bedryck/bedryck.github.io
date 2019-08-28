@@ -22,6 +22,9 @@
     var timer = Date.now();
 
 window.addEventListener("load", function () {
+    function scriptOnload(){
+    console.log('script loaded')
+    }
     console.log("time left", Date.now() - timer);
 
     var script = document.createElement('script');
