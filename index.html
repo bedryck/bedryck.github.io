@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <script onload="scriptOnload" src="https://app.activechat.ai/script/991f18a5-03a6-4e4b-b9d4-61d232579c7a" ></script>
+  <script onload="loadScript" src="https://app.activechat.ai/script/991f18a5-03a6-4e4b-b9d4-61d232579c7a" ></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
@@ -20,11 +20,11 @@
   <script>
     "use strict";
     var timer = Date.now();
-function scriptOnload(){
+
+window.addEventListener("load", function () {
+    let loadScript = () =>{
     console.log('script loaded')
     }
-window.addEventListener("load", function () {
-    
     console.log("time left", Date.now() - timer);
 
     var script = document.createElement('script');
