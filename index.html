@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8" />
-  <script onload="loadScript()" src="https://app.activechat.ai/script/991f18a5-03a6-4e4b-b9d4-61d232579c7a" ></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
@@ -28,8 +27,9 @@ window.addEventListener("load", function () {
     console.log("time left", Date.now() - timer);
 
     var script = document.createElement('script');
-    script.src = 'https://afc200a3.ngrok.io/script/991f18a5-03a6-4e4b-b9d4-61d232579c7a';
+    script.src = 'app.activechat.ai/script/991f18a5-03a6-4e4b-b9d4-61d232579c7a';
     script.id = 'ACCW_EMBED';
+    script.onload= "loadScript()"
     document.getElementsByTagName('head')[0].appendChild(script);
 
     var embeddedtimer = Date.now();
