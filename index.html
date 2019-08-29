@@ -20,7 +20,7 @@
     "use strict";
     var timer = Date.now();
 
-window.addEventListener("load", function () {
+ (function () {
   
     console.log("time left", Date.now() - timer);
 
@@ -34,7 +34,7 @@ window.addEventListener("load", function () {
     document.querySelector('#ACCW_EMBED').addEventListener('load', function () {
         console.log("embedded time left", Date.now() - embeddedtimer);
     })
-});
+})()
   </script>
   
 </body>
