@@ -17,29 +17,19 @@
   
   
   <script>
-    "use strict";
-    var timer = Date.now();
-
-  
+window['acTrackingLoaded'] = () => console.log('acTrackingLoaded');
+window['acChatWidgetLoaded'] = () => console.log('acChatWidgetLoaded');
+window['acFacebookWidgetLoaded'] = () => console.log('acFacebookWidgetLoaded');
     
  (function () {
-  
-    console.log("time left", Date.now() - timer);
-
     var script = document.createElement('script');
-    script.src = 'https://app.activechat.ai/script/0451d124-6e32-4d39-ab50-6f0e9ee3abf6';
+    script.src = 'https://407dce9b.ngrok.io/script/0451d124-6e32-4d39-ab50-6f0e9ee3abf6';
     script.id = 'ACCW_EMBED';
-    script.onload = accw_embed_Loaded();
     document.getElementsByTagName('head')[0].appendChild(script);
-
-    var embeddedtimer = Date.now();
- 
 })()
-     function accw_embed_Loaded(){
-      console.log('embedded loaded');
-    };
     
-    document.querySelector('h1').addEventListener('click', 'accw_embed_Loaded');
+
+
     
   </script>
   
