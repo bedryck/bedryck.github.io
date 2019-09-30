@@ -31,7 +31,7 @@
     var script = document.createElement('script');
     script.src = 'https://app.activechat.ai/script/0451d124-6e32-4d39-ab50-6f0e9ee3abf6';
     script.id = 'ACCW_EMBED';
-    script.onload = accw_embed_Loaded();
+    script.onload = () => accw_embed_Loaded();
     document.getElementsByTagName('head')[0].appendChild(script);
 
     var embeddedtimer = Date.now();
