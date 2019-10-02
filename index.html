@@ -23,7 +23,7 @@ window['acFacebookWidgetLoaded'] = () => console.log('acFacebookWidgetLoaded');
     
  (function () {
     var script = document.createElement('script');
-    script.src = 'https://407dce9b.ngrok.io/script/042fbd59-0434-4b4d-a32a-41f376f89165';
+    script.src = 'https://app.activechat.ai/script/042fbd59-0434-4b4d-a32a-41f376f89165';
     script.id = 'ACCW_EMBED';
     document.getElementsByTagName('head')[0].appendChild(script);
 })()
@@ -32,6 +32,39 @@ window['acFacebookWidgetLoaded'] = () => console.log('acFacebookWidgetLoaded');
 
     
   </script>
+  
+  <script>
+(function () {
+    var TIME_TO_CLEAR_COOKIE = 1; //time to clear cookie (in minutes)
+    //magic below
+    var acAnonymousIDAt = +localStorage.getItem('acAnonymousIDAt');
+    function setCookie(name, valueForCookie = '') {
+        if (name) {
+            let params = {
+                [name]: valueForCookie && typeof valueForCookie === 'object' ?
+                    JSON.stringify(valueForCookie) :
+                    valueForCookie.toString(),
+                path: '/',
+                'max-age': 60 * 60 * 24 * 365 * 4
+            }
+            let resultCookie = Object.keys(params).map(param => `${param}=${params[param]}`).join('; ')
+            document.cookie = resultCookie
+        }
+    }
+    if (acAnonymousIDAt) {
+        if (Date.now() > (TIME_TO_CLEAR_COOKIE * 60 * 1000) + acAnonymousIDAt) {
+            setCookie('anonymousID');
+            setCookie('Facebook_anonymousID');
+            setCookie('ActiveChat_anonymousID');
+            setCookie('userID');
+            localStorage.setItem('acAnonymousIDAt', Date.now())
+        }
+    } else {
+        localStorage.setItem('acAnonymousIDAt', Date.now())
+    }
+})();
+</script>
+
   
 </body>
 
