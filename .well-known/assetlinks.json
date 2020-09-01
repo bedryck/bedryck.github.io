@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "io.electric.miles",
+            "sha256_cert_fingerprints": [
+                "38:AC:11:43:EF:DD:FD:6E:2F:05:28:98:3C:0D:55:8A:E4:91:7B:18:CA:43:47:44:DB:2A:84:73:32:3E:CA:1D"
+            ]
+        }
+    }
+]
