@@ -16,15 +16,12 @@
     Hello deeplink 2
   </span>
 
-  <a href="https://dashboard.electricmiles.io/social_page">Open app</a>
+  <a id="openAppLink" href="https://dashboard.electricmiles.io/social_page">Open app</a>
 
   <script>
     window.addEventListener('load', function () {
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById('openAppLink').setAttribute("href", "https://dashboard.electricmiles.io/social_page?" + urlParams)
     });
   </script>
 
