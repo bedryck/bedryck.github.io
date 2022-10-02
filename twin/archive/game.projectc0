@@ -1,6 +1,6 @@
 [project]
 title = Twin
-version = 0.0.6
+version = 0.0.7
 write_log = 0
 compress_archive = 1
 publisher = unnamed
@@ -138,7 +138,7 @@ app_icon_72x72 = /assets/app_icons/ic_launcher-72.png
 app_icon_96x96 = /assets/app_icons/ic_launcher-96.png
 app_icon_144x144 = /assets/app_icons/ic_launcher-144.png
 app_icon_192x192 = /assets/app_icons/ic_launcher-192.png
-version_code = 9
+version_code = 10
 minimum_sdk_version = 16
 target_sdk_version = 31
 package = com.twin.game
@@ -171,7 +171,7 @@ cssfile = /builtins/manifests/web/light_theme.css
 splash_image = /assets/app_icons/splash.png
 archive_location_prefix = archive
 archive_location_suffix = 
-engine_arguments = 
+engine_arguments = --verify-graphics-calls=false
 wasm_streaming = 0
 show_fullscreen_button = 0
 show_made_with_defold = 0
@@ -204,6 +204,7 @@ subpixels = 1
 
 [profiler]
 track_cpu = 0
+sleep_between_server_updates = 0
 
 [liveupdate]
 settings = /liveupdate.settings
