@@ -1,6 +1,6 @@
 [project]
 title = Twin
-version = 0.0.7
+version = 0.0.8
 write_log = 0
 compress_archive = 1
 publisher = unnamed
@@ -28,6 +28,7 @@ clear_color_alpha = 0
 
 [physics]
 type = 2D
+max_collision_object_count = 600
 use_fixed_timestep = 1
 gravity_y = -10
 debug = 0
@@ -90,6 +91,7 @@ subpixels = 1
 
 [model]
 max_count = 128
+split_meshes = 0
 
 [mesh]
 max_count = 128
@@ -104,7 +106,7 @@ max_instances = 1024
 max_input_stack_entries = 16
 
 [collection_proxy]
-max_count = 8
+max_count = 10
 
 [collectionfactory]
 max_count = 128
@@ -138,8 +140,8 @@ app_icon_72x72 = /assets/app_icons/ic_launcher-72.png
 app_icon_96x96 = /assets/app_icons/ic_launcher-96.png
 app_icon_144x144 = /assets/app_icons/ic_launcher-144.png
 app_icon_192x192 = /assets/app_icons/ic_launcher-192.png
-version_code = 10
-minimum_sdk_version = 16
+version_code = 11
+minimum_sdk_version = 19
 target_sdk_version = 31
 package = com.twin.game
 gcm_sender_id = 
@@ -223,4 +225,8 @@ app_id_android = ca-app-pub-2935375956488057~7133674352
 
 [safearea]
 resize_game_view = 0
+
+[API]
+prod_api_url = some_url
+dev_api_url = http://localhost:3000/api
 
