@@ -1,6 +1,6 @@
 [project]
 title = Twin
-version = 0.0.8
+version = 0.1.1
 write_log = 0
 compress_archive = 1
 publisher = unnamed
@@ -140,7 +140,7 @@ app_icon_72x72 = /assets/app_icons/ic_launcher-72.png
 app_icon_96x96 = /assets/app_icons/ic_launcher-96.png
 app_icon_144x144 = /assets/app_icons/ic_launcher-144.png
 app_icon_192x192 = /assets/app_icons/ic_launcher-192.png
-version_code = 12
+version_code = 14
 minimum_sdk_version = 19
 target_sdk_version = 31
 package = com.twin.game
