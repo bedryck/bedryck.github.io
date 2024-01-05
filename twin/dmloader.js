@@ -132,7 +132,10 @@ var EngineLoader = {
             async function fetchWithProgress(path) {
                 const response = await fetch(path);
                 // May be incorrect if compressed
-                const contentLength = response.headers.get("Content-Length");
+                var contentLength = response.headers.get("Content-Length");
+                if (!contentLength){
+                    contentLength = EngineLoader.wasm_size;
+                }
                 const total = parseInt(contentLength, 10);
 
                 let bytesLoaded = 0;
@@ -187,7 +190,7 @@ var EngineLoader = {
             function(response) {
                 var tag = document.createElement("script");
                 tag.text = response;
-                document.head.appendChild(tag);
+                document.body.appendChild(tag);
             });
     },
 
@@ -479,7 +482,7 @@ var Progress = {
 
     updateProgress: function(percentage) {
         if (Progress.bar) {
-            Progress.bar.style.width = percentage + "%";
+            Progress.bar.style.width = Math.min(percentage, 100) + "%";
         }
         Progress.notifyListeners(percentage);
     },
@@ -716,11 +719,16 @@ var Module = {
     },
 
     preSync: function(done) {
+        if (Module.persistentStorage != true) {
+            Module._syncInitial = true;
+            done();
+            return;
+        }
         // Initial persistent sync before main is called
         FS.syncfs(true, function(err) {
-            if(err) {
+            if (err) {
                 Module._syncTries += 1;
-                console.error("FS syncfs error: " + err);
+                console.warn("Unable to synchronize mounted file systems: " + err);
                 if (Module._syncMaxTries > Module._syncTries) {
                     Module.preSync(done);
                 } else {
@@ -751,6 +759,9 @@ var Module = {
     // It will flag that another one is needed if there is already one sync running.
     persistentSync: function() {
 
+        if (Module.persistentStorage != true) {
+            return;
+        }
         // Need to wait for the initial sync to finish since it
         // will call close on all its file streams which will trigger
         // new persistentSync for each.
@@ -764,27 +775,40 @@ var Module = {
     },
 
     preInit: [function() {
-        /* Mount filesystem on preinit */
+        // Mount filesystem on preinit
         var dir = DMSYS.GetUserPersistentDataRoot();
-        FS.mkdir(dir);
+        try {
+            FS.mkdir(dir);
+        }
+        catch (error) {
+            Module.persistentStorage = false;
+            Module._preloadAndCallMain();
+            return;
+        }
 
         // If IndexedDB is supported we mount the persistent data root as IDBFS,
         // then try to do a IDB->MEM sync before we start the engine to get
         // previously saved data before boot.
-        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-        if (Module.persistentStorage && window.indexedDB) {
+        try {
             FS.mount(IDBFS, {}, dir);
-
             // Patch FS.close so it will try to sync MEM->IDB
-            var _close = FS.close; FS.close = function(stream) { var r = _close(stream); Module.persistentSync(); return r; }
-
-            // Sync IDB->MEM before calling main()
-            Module.preSync(function() {
-                Module._preloadAndCallMain();
-            });
-        } else {
-            Module._preloadAndCallMain();
+            var _close = FS.close;
+            FS.close = function(stream) {
+                var r = _close(stream);
+                Module.persistentSync();
+                return r;
+            }
         }
+        catch (error) {
+            Module.persistentStorage = false;
+            Module._preloadAndCallMain();
+            return;
+        }
+
+        // Sync IDB->MEM before calling main()
+        Module.preSync(function() {
+            Module._preloadAndCallMain();
+        });
     }],
 
     preRun: [function() {
@@ -826,7 +850,7 @@ var Module = {
                 Module._syncInProgress = false;
 
                 if (err) {
-                    console.error("Module._startSyncFS error: " + err);
+                    console.warn("Unable to synchronize mounted file systems: " + err);
                     Module._syncTries += 1;
                 }
 

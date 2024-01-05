@@ -1,6 +1,6 @@
 [project]
 title = Twin
-version = 0.1.1
+version = 0.2.0
 write_log = 0
 compress_archive = 1
 publisher = unnamed
@@ -100,13 +100,14 @@ max_count = 128
 max_count = 64
 max_particlefx_count = 64
 max_particle_count = 1024
+max_animation_count = 1024
 
 [collection]
 max_instances = 1024
 max_input_stack_entries = 16
 
 [collection_proxy]
-max_count = 10
+max_count = 20
 
 [collectionfactory]
 max_count = 128
@@ -140,9 +141,9 @@ app_icon_72x72 = /assets/app_icons/ic_launcher-72.png
 app_icon_96x96 = /assets/app_icons/ic_launcher-96.png
 app_icon_144x144 = /assets/app_icons/ic_launcher-144.png
 app_icon_192x192 = /assets/app_icons/ic_launcher-192.png
-version_code = 14
+version_code = 16
 minimum_sdk_version = 19
-target_sdk_version = 31
+target_sdk_version = 33
 package = com.twin.game
 gcm_sender_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
