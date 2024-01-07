@@ -1,3 +1,4 @@
 {
-    "apiUrl": "https://twin.cuy-cod.fun"
+    "apiUrl": "https://twin.cuy-cod.fun",
+    "wsApiUrl": "wss://twin.cuy-cod.fun"
 }
