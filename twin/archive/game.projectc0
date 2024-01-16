@@ -170,7 +170,7 @@ app_icon =
 [html5]
 custom_heap_size = 0
 heap_size = 256
-htmlfile = /builtins/manifests/web/engine_template.html
+htmlfile = /assets/web/engine_template.html
 cssfile = /assets/web/theme.css
 splash_image = /assets/app_icons/splash.png
 archive_location_prefix = archive
