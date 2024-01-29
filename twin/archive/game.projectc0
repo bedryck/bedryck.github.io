@@ -21,14 +21,14 @@ dynamic_orientation = 0
 display_device_info = 0
 
 [render]
-clear_color_red = 0
-clear_color_green = 0
-clear_color_blue = 0
-clear_color_alpha = 0
+clear_color_red = 1.0
+clear_color_green = 1.0
+clear_color_blue = 1.0
+clear_color_alpha = 1.0
 
 [physics]
 type = 2D
-max_collision_object_count = 600
+max_collision_object_count = 1500
 use_fixed_timestep = 1
 gravity_y = -10
 debug = 0
@@ -86,7 +86,7 @@ game_binding = /input/game.input_bindingc
 use_accelerometer = 0
 
 [sprite]
-max_count = 450
+max_count = 1125
 subpixels = 1
 
 [model]
