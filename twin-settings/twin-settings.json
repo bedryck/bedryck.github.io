@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http://93.127.120.247",
-  "wsApiUrl": "ws://93.127.120.247"
+  "apiUrl": "https://twin.cuy-cod.fun",
+  "wsApiUrl": "wss://twin.cuy-cod.fun"
 }
